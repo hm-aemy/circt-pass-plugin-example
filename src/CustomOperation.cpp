@@ -34,13 +34,13 @@ struct CustomOperation : public impl::CustomOperationPassBase<CustomOperation> {
 
 namespace mlir {
 // Pass plugin registration mechanism.
-/// Necessary symbol to register the pass plugin.
+// Necessary symbol to register the pass plugin.
 extern "C" LLVM_ATTRIBUTE_WEAK PassPluginLibraryInfo mlirGetPassPluginInfo() {
   return {MLIR_PLUGIN_API_VERSION, "CustomOperation", "v0.1",
           []() {
               // call registerCustomOperationPass(), which in turn
-              /// calls createCustomOperationPass() (see line 89
-              /// of build/include/CustomOperation/CustomOperation.h.inc)
+              // calls createCustomOperationPass() (see line 89
+              // of build/include/CustomOperation/CustomOperation.h.inc)
               mlir::customoperation::registerCustomOperationPass();
           }};
 }
